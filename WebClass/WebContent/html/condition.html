@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+	
+<script>
+function check() {
+	var age = Number(document.getElementById("age").value);
+	var weight = Number(document.getElementById("weight").value);
+
+	document.getElementById("result").innerHTML = "";
+
+	//age check
+	if (age < 16 || age >69) {
+		document.getElementById("result").innerHTML += "연령 미달<br>";
+	}
+	
+	//male check
+	if (document.getElementById("male").checked) {
+		if (weight < 50) {
+			document.getElementById("result").innerHTML += "체중 미달<br>";
+		}
+	}
+
+	//female check
+	if (document.getElementById("female").checked) {
+		if (weight < 45) {
+			document.getElementById("result").innerHTML += "체중 미달<br>";
+		}
+	}
+	
+	if (document.getElementById("result").innerHTML == "") {
+		document.getElementById("result").innerHTML = "헌혈 가능합니다";
+	}
+}
+</script>
+
+
+나이 | <input type="text" id="age" size="5"><br>
+성별 | 남자<input type="radio" name="gender" id="male" checked>
+여자	<input type="radio" name="gender" id="female"><br>
+체중	| <input type="text" id="weight" size="7"><br>
+<input type="button" onclick="check()" value="헌혈 확인하기"><br>
+<p id="result"></p>
+
+</body>
+</html>
