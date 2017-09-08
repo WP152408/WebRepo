@@ -1,8 +1,8 @@
 function menu_over(e) {
-	e.setAtribute("class", "nav-item active"); // <li class="nav-item active">
+	e.class = "nav-item active"; // <li class="nav-item active">
 }
 function menu_out(e) {
-	e.setAtribute("class", "nav-item"); // <li class="nav-item">
+	e.class = "nav-item"; // <li class="nav-item active">
 }
 
 
