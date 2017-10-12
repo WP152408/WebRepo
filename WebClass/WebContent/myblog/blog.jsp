@@ -1,0 +1,247 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="org.dimigo.vo.UserVO" %>
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<title>박성진의 개인 블로그</title>
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+	integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+	crossorigin="anonymous">
+	
+<link rel="stylesheet" type="text/css" href="../css/myblog.css">
+<script type="text/javascript" src="../js/myblog.js"></script>
+
+</head>
+<body>
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark" id="mains">
+		<a class="navbar-brand" href="#">2408 박성진</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false"
+			aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item" onmouseover="menu_over(this);"
+					onmouseout="menu_out(this)"><a class="nav-link"
+					href="#profiles">인물 소개</a></li>
+				<li class="nav-item" onmouseover="menu_over(this);"
+					onmouseout="menu_out(this)"><a class="nav-link"
+					href="#favorites">좋아하는 것</a></li>
+				<li class="nav-item" onmouseover="menu_over(this);"
+					onmouseout="menu_out(this)"><a class="nav-link"
+					href="#portfolio">포트폴리오</a></li>
+			</ul>
+			<div id="profile">
+					
+					
+    <%-- 세션이 없는 경우 --%>
+    <%
+    	UserVO user = (UserVO) session.getAttribute("user");
+    	if (user == null) {
+    %>
+    			<a class="btn btn-outline-success my-2 my-sm-0" href="/WebClass/bloglogin">Login</a>
+				<button class="btn btn-outline-success my-2 my-sm-0" type="button"
+					onclick="register()">Register</button>
+    	<%} else {%>
+    <%-- 세션이 있는 경우 --%>
+	    <ul class="navbar-nav flex-row ml-md-auto d-none d-md-flex">
+	    <li class="nav-item dropdown">
+	      <a class="nav-item nav-link dropdown-toggle mr-md-2" href="#" id="bd-versions" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+	    	<%= user.getName() + " 님" %>
+	      </a>
+	      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="bd-versions">
+ 			 <form id="logoutForm" class="form-signout" action="" method="post">
+	      	<button type="submit" class="dropdown-item">Sign out</button>
+	      	</form>
+	       	<div class="dropdown-divider"></div>
+	        <button type="button" class="dropdown-item">Action1</button>
+	        <button type="button" class="dropdown-item">Action2</button>
+	      </div>
+	    </li>
+	    </ul>
+	    <% } %>
+	    
+			</div>
+		</div>
+	</nav>
+
+
+	<div class="container">
+		
+		
+		
+		
+		
+	
+		<h1 id="profiles"><strong>인물 소개</strong></h1>
+		<hr>
+		<div><img src="../image/profile.jpg" alt="" width="960" height="600"></div>
+		<div><br>
+		<h3><strong>Who Am I?</strong></h3>
+		<ul>
+		<li>2000. 03. 27 출생</li>
+		<li>경기도 부천시 소사구 범박동 거주 중</li>
+		<li>한국 디지털 미디어 고등학교 15기 웹 프로그래밍과 재학중</li>
+		<li>교내 게임 개발 동아리 게임즈 소속</li>
+		</ul><br><br>
+		<h3><strong>My Academic Achievement</strong></h3>
+		<ul>
+		<li>삼오 유치원 졸업</li>
+		<li>부천 창영 초등학교 졸업</li>
+		<li>부천 동 중학교 졸업</li>
+		<li>한국 디지털 미디어 고등학교 재학중</li>
+		</ul><br><br>
+		<h3><strong>What I Can Do</strong></h3>
+		<ul>
+		<li>기초적인 수준의 C, C++, C#, Java, Python</li>
+		<li>AfterEffect, Vegas를 이용한 간단한 영상 편집</li>
+		<li>GameMakerStudio, Unity3D를 이용한 게임 개발</li>
+		</ul><br><br>
+		<hr>
+		<a href="#mains">맨 위로 이동</a>
+		</div>
+		
+		
+		<br><br><br><br><br><br><br><br><br><br><br><br><br>
+		
+		
+		<h1 id="favorites"><strong>좋아하는 것</strong></h1>
+		<hr>
+		<div><img src="../image/game1.png" alt="" width="960" height="600"></div><br>
+		<div><img src="../image/game2.png" alt="" width="960" height="600"></div>
+		<div><br>
+		<h3><strong>My Favorite Games</strong></h3>
+		<ul>
+		<li>하스스톤, 쉐도우버스 등의 <strong>1대1 전략 카드 게임</strong></li>
+		<li>오버워치, 히어로즈 오브 더 스톰 등의 <strong>팀 협동 게임</strong></li>
+		<li>디아블로3, 테라, 메이플스토리2 등의 <strong>MMORPG 게임</strong></li>
+		<li>언더테일, 다운웰, FTL, 리스크 오브 레인 등의 각양각색의 <strong>인디 게임</strong></li>
+		</ul><br><br>
+		<div><img src="../image/book1.jpg" alt="" width="960" height="600"></div><br>
+		<div><img src="../image/book2.jpg" alt="" width="960" height="600"></div><br>
+		<br>
+		<h3><strong>My Favorite Books and Authors</strong></h3>
+		<ul>
+		<li>피를 마시는 새, 눈물을 마시는 새, 드래곤 라자 등을 저술한 <strong>이영도</strong></li>
+		<li>베네딕튜 비밀클럽, 베네딕튜 비밀클럽2 등을 저술한 <strong>트렌톤 리 스튜어트</strong></li>
+		<li>끝없는 이야기, 모모 등을 저술한 <strong>미하엘 엔데</strong></li>
+		<li>비밀의 도서관 등을 저술한 <strong>랄프 이자우</strong></li>
+		</ul><br><br>
+		<div><img src="../image/movie1.jpg" alt="" width="960" height="600"></div><br>
+		<div><img src="../image/movie2.jpg" alt="" width="960" height="600"></div><br>
+		<br>
+		<h3><strong>My Favorite Movies</strong></h3>
+		<ul>
+		<li>어벤져스, 스파이더맨 홈커밍 등의 <strong>히어로 영화</strong></li>
+		<li>인사이드 아웃, 슈퍼 배드 등의 <strong>3D 애니메이션 영화</strong></li>
+		</ul><br><br>
+		<hr>
+		<a href="#mains">맨 위로 이동</a>
+		</div>
+		
+		
+		<br><br><br><br><br><br><br><br><br><br><br><br><br>
+		
+		
+		<h1 id="portfolio"><strong>포트폴리오</strong></h1>
+		<hr>
+		<div>
+		<div><img src="../image/port1_1.png" alt="" width="960" height="600"></div><br>
+		<div><img src="../image/port1_2.jpg" alt="" width="960" height="600"></div><br>
+		<br>
+		<h3><strong>2015년 7월 퍼즐게임 Quess Piece</strong></h3>
+		<ul>
+		<li>개인 제작 작품</li>
+		<li>2015 청소년 콘텐츠 창작 공모전 중등부 최우수상(1위)</li>
+		<li>상급 <strong>100만원</strong> 수령</li>
+		</ul>
+		<br><br>
+		
+		
+		<div><img src="../image/port2_1.png" alt="" width="960" height="600"></div><br>
+		<div><img src="../image/port2_2.jpg" alt="" width="960" height="600"></div><br>
+		<br>
+		<h3><strong>2016년 11월 러너게임 달려라! 007</strong></h3>
+		<ul>
+		<li>팀 CSS(총 4인) 제작 작품</li>
+		<li>제 4회 인디게임 위크엔드 공동 동상(공동 3위)</li>
+		<li>상품 <strong>마우스 및 그래픽카드</strong> 수령</li>
+		</ul>
+		<br><br>
+		
+		
+		<div><img src="../image/port3_1.png" alt="" width="960" height="600"></div><br>
+		<div><img src="../image/port3_2.png" alt="" width="960" height="600"></div><br>
+		<br>
+		<h3><strong>2017년 8월 퍼즐게임 체스퀘스트</strong></h3>
+		<ul>
+		<li>개인 제작 작품</li>
+		<li>2017 우송대학교 KWC IT분야 통합 대상(1위)</li>
+		<li>상금 <strong>200만원</strong> 수령</li>
+		</ul>
+		<br><br>
+		<hr>
+		<a href="#mains">맨 위로 이동</a>
+		</div>
+	</div>
+
+
+
+	<!-- Modal -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog"
+		aria-labelledby="TITLE" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="TITLE">Modal title</h5>
+					<button type="button" class="close" data-dismiss="modal"
+						aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div id="MODAL">
+					<form class="form-inline my-2 my-lg-1" id="loginForm"></form>
+
+					<form class="form-inline my-2 my-lg-1" id="registerForm"></form>
+					
+					<div id="justModal"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+		integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+		integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+		crossorigin="anonymous"></script>
+		
+		<script type="text/javascript" src="../js/myblog2.js"></script>
+		
+		<script>
+
+		$(document).ready(function() {
+			$('#logoutForm').submit(function(event) {
+				//서버로 post 방식 전송
+				$.post("/WebClass/bloglogout");
+			})
+		});
+		</script>
+</body>
+</html>
